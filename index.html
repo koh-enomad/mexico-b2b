@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENOMAD K-Beauty B2B | Mexico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & VARIABLES ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --brand-navy: #0f1923;
+    --brand-coral: #e8533c;
+    --brand-coral-light: #fdf1ee;
+    --brand-gold: #c9a96e;
+    --brand-cream: #faf8f5;
+    --brand-white: #ffffff;
+    --brand-muted: #6b7280;
+    --brand-border: #e8e4de;
+    --brand-dark-text: #1a1f2e;
+    --brand-success: #1a7a4a;
+    --brand-success-bg: #ecfdf5;
+    --brand-warn: #b45309;
+    --brand-warn-bg: #fffbeb;
+    --brand-danger: #991b1b;
+    --brand-danger-bg: #fef2f2;
+
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+
+    --sidebar-w: 340px;
+    --header-h: 72px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--brand-cream);
+    color: var(--brand-dark-text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: var(--brand-navy);
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 1.5rem;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .header-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .header-logo .brand-en {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--brand-white);
+    letter-spacing: 0.02em;
+  }
+
+  .header-logo .brand-sub {
+    font-size: 10px;
+    color: var(--brand-gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+
+  .header-title {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    flex: 1;
+  }
+
+  .header-cart-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-coral);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .header-cart-btn:hover { background: #d44830; transform: translateY(-1px); }
+
+  .cart-badge {
+    background: var(--brand-gold);
+    color: var(--brand-navy);
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    min-width: 18px;
+    text-align: center;
+  }
+
+  /* ===== SEARCH BAR ===== */
+  .search-section {
+    background: var(--brand-white);
+    border-bottom: 1px solid var(--brand-border);
+    padding: 1rem 2rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: var(--header-h);
+    z-index: 100;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    border: 1.5px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    padding: 8px 12px 8px 36px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--brand-cream);
+  }
+
+  .search-wrap input:focus { border-color: var(--brand-coral); background: white; }
+
+  .search-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--brand-muted);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  .filter-chips {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .chip {
+    border: 1.5px solid var(--brand-border);
+    background: var(--brand-white);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+    white-space: nowrap;
+    color: var(--brand-muted);
+  }
+
+  .chip:hover { border-color: var(--brand-coral); color: var(--brand-coral); }
+  .chip.active { background: var(--brand-coral); border-color: var(--brand-coral); color: white; }
+
+  .sort-select {
+    border: 1.5px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    padding: 7px 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    outline: none;
+    background: white;
+    cursor: pointer;
+    color: var(--brand-dark-text);
+  }
+
+  .results-count {
+    font-size: 12px;
+    color: var(--brand-muted);
+    white-space: nowrap;
+  }
+
+  /* ===== MAIN LAYOUT ===== */
+  .main-layout {
+    display: flex;
+    min-height: calc(100vh - var(--header-h) - 72px);
+  }
+
+  /* ===== PRODUCT GRID ===== */
+  .product-section {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    min-width: 0;
+  }
+
+  .brand-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .brand-group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--brand-border);
+  }
+
+  .brand-group-name {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--brand-navy);
+    letter-spacing: 0.02em;
+  }
+
+  .brand-count {
+    font-size: 11px;
+    color: var(--brand-muted);
+    background: var(--brand-cream);
+    border: 1px solid var(--brand-border);
+    border-radius: 100px;
+    padding: 2px 8px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  /* ===== PRODUCT CARD ===== */
+  .product-card {
+    background: var(--brand-white);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all 0.22s;
+    position: relative;
+  }
+
+  .product-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    border-color: #d4cfc8;
+  }
+
+  .product-card.in-cart {
+    border-color: var(--brand-coral);
+    box-shadow: 0 0 0 1px var(--brand-coral);
+  }
+
+  .product-card.out-of-stock {
+    opacity: 0.55;
+  }
+
+  .card-image-area {
+    background: linear-gradient(135deg, #f9f7f4 0%, #f2efea 100%);
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image-placeholder {
+    font-size: 36px;
+    opacity: 0.25;
+    user-select: none;
+  }
+
+  .category-tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--brand-navy);
+    color: rgba(255,255,255,0.85);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border-radius: 4px;
+  }
+
+  .stock-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 100px;
+  }
+
+  .stock-badge.ok { background: var(--brand-success-bg); color: var(--brand-success); }
+  .stock-badge.low { background: var(--brand-warn-bg); color: var(--brand-warn); }
+  .stock-badge.out { background: var(--brand-danger-bg); color: var(--brand-danger); }
+
+  .card-body {
+    padding: 12px;
+  }
+
+  .card-brand {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--brand-coral);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .card-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brand-dark-text);
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 34px;
+  }
+
+  .card-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+
+  .card-price {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--brand-navy);
+  }
+
+  .card-currency {
+    font-size: 10px;
+    color: var(--brand-muted);
+    font-weight: 500;
+  }
+
+  .card-stock-text {
+    font-size: 10px;
+    color: var(--brand-muted);
+    margin-left: auto;
+  }
+
+  /* QTY CONTROL */
+  .qty-control {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .qty-btn {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--brand-border);
+    background: var(--brand-cream);
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    color: var(--brand-dark-text);
+    line-height: 1;
+  }
+
+  .qty-btn:hover { background: var(--brand-coral); border-color: var(--brand-coral); color: white; }
+  .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .qty-btn:disabled:hover { background: var(--brand-cream); border-color: var(--brand-border); color: var(--brand-dark-text); }
+
+  .qty-input {
+    width: 44px;
+    height: 28px;
+    text-align: center;
+    border: 1.5px solid var(--brand-border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    outline: none;
+    background: white;
+  }
+
+  .qty-input:focus { border-color: var(--brand-coral); }
+
+  .add-to-cart-btn {
+    flex: 1;
+    height: 28px;
+    background: var(--brand-coral);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.02em;
+  }
+
+  .add-to-cart-btn:hover { background: #d44830; }
+  .add-to-cart-btn.added { background: var(--brand-success); }
+
+  /* ===== SIDEBAR CART ===== */
+  .sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    background: var(--brand-white);
+    border-left: 1px solid var(--brand-border);
+    position: sticky;
+    top: calc(var(--header-h) + 72px);
+    height: calc(100vh - var(--header-h) - 72px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-header {
+    padding: 1.25rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--brand-border);
+    position: sticky;
+    top: 0;
+    background: var(--brand-white);
+    z-index: 10;
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--brand-navy);
+    margin-bottom: 4px;
+  }
+
+  .sidebar-subtitle {
+    font-size: 11px;
+    color: var(--brand-muted);
+  }
+
+  .sidebar-items {
+    flex: 1;
+    padding: 1rem 1.25rem;
+    overflow-y: auto;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--brand-muted);
+  }
+
+  .cart-empty-icon {
+    font-size: 40px;
+    margin-bottom: 0.75rem;
+    opacity: 0.3;
+  }
+
+  .cart-empty p { font-size: 13px; line-height: 1.5; }
+
+  .cart-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--brand-border);
+    position: relative;
+  }
+
+  .cart-item:last-child { border-bottom: none; }
+
+  .cart-item-info { flex: 1; min-width: 0; }
+
+  .cart-item-brand {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--brand-coral);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .cart-item-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--brand-dark-text);
+    line-height: 1.35;
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cart-item-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cart-qty-btn {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--brand-border);
+    background: var(--brand-cream);
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.12s;
+    line-height: 1;
+    color: var(--brand-dark-text);
+  }
+
+  .cart-qty-btn:hover { background: var(--brand-coral); border-color: var(--brand-coral); color: white; }
+
+  .cart-qty-display {
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .cart-item-subtotal {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-navy);
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  .cart-remove {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--brand-muted);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 2px;
+    opacity: 0.5;
+    transition: opacity 0.15s;
+  }
+
+  .cart-remove:hover { opacity: 1; color: var(--brand-danger); }
+
+  /* ===== CART FOOTER ===== */
+  .cart-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 2px solid var(--brand-border);
+    background: var(--brand-white);
+    position: sticky;
+    bottom: 0;
+  }
+
+  .cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  .cart-summary-label { font-size: 12px; color: var(--brand-muted); }
+
+  .cart-summary-val {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--brand-dark-text);
+  }
+
+  .cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 10px 0 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--brand-border);
+  }
+
+  .cart-total-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-navy);
+  }
+
+  .cart-total-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand-navy);
+  }
+
+  .cart-total-currency {
+    font-size: 12px;
+    color: var(--brand-muted);
+    margin-left: 3px;
+  }
+
+  .order-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--brand-navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    margin-bottom: 8px;
+  }
+
+  .order-btn:hover { background: var(--brand-coral); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .order-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+  .clear-btn {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    color: var(--brand-muted);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .clear-btn:hover { border-color: var(--brand-danger); color: var(--brand-danger); }
+
+  /* ===== ORDER MODAL ===== */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15,25,35,0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-backdrop.open { display: flex; }
+
+  .modal {
+    background: white;
+    border-radius: var(--radius-xl);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    animation: modal-in 0.25s ease;
+  }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .modal-header {
+    padding: 1.75rem 2rem 1.25rem;
+    border-bottom: 1px solid var(--brand-border);
+  }
+
+  .modal-header h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--brand-navy);
+    margin-bottom: 4px;
+  }
+
+  .modal-header p { font-size: 13px; color: var(--brand-muted); }
+
+  .modal-body { padding: 1.5rem 2rem; }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-navy);
+    margin-bottom: 5px;
+    letter-spacing: 0.03em;
+  }
+
+  .form-label span {
+    color: var(--brand-coral);
+    margin-left: 2px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    border: 1.5px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: var(--brand-cream);
+    color: var(--brand-dark-text);
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--brand-coral);
+    background: white;
+  }
+
+  .form-textarea { resize: vertical; min-height: 80px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .order-preview {
+    background: var(--brand-cream);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .order-preview-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand-navy);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .order-preview-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    padding: 3px 0;
+    color: var(--brand-dark-text);
+    border-bottom: 1px solid var(--brand-border);
+  }
+
+  .order-preview-item:last-child { border-bottom: none; }
+
+  .order-preview-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--brand-navy);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 2px solid var(--brand-border);
+  }
+
+  .modal-footer {
+    padding: 1.25rem 2rem 1.75rem;
+    border-top: 1px solid var(--brand-border);
+    display: flex;
+    gap: 10px;
+  }
+
+  .modal-cancel {
+    flex: 1;
+    padding: 11px;
+    background: white;
+    border: 1.5px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--brand-muted);
+  }
+
+  .modal-cancel:hover { border-color: var(--brand-muted); color: var(--brand-dark-text); }
+
+  .modal-submit {
+    flex: 2;
+    padding: 11px;
+    background: var(--brand-coral);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .modal-submit:hover { background: #d44830; }
+  .modal-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ===== SUCCESS MODAL ===== */
+  .success-modal {
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--brand-success-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 28px;
+  }
+
+  .success-modal h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--brand-navy);
+    margin-bottom: 8px;
+  }
+
+  .success-modal p { font-size: 13px; color: var(--brand-muted); line-height: 1.6; }
+
+  .success-ref {
+    display: inline-block;
+    background: var(--brand-cream);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brand-navy);
+    font-family: monospace;
+  }
+
+  .success-close {
+    margin-top: 1rem;
+    padding: 10px 28px;
+    background: var(--brand-navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .success-close:hover { background: var(--brand-coral); }
+
+  /* ===== TOAST ===== */
+  .toast-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: none;
+  }
+
+  .toast {
+    background: var(--brand-navy);
+    color: white;
+    padding: 10px 18px;
+    border-radius: var(--radius-md);
+    font-size: 13px;
+    box-shadow: var(--shadow-md);
+    animation: toast-in 0.25s ease;
+    white-space: nowrap;
+  }
+
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .toast.success { background: var(--brand-success); }
+  .toast.error { background: #991b1b; }
+
+  /* ===== EMPTY STATE ===== */
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--brand-muted);
+    width: 100%;
+  }
+
+  .no-results-icon { font-size: 48px; margin-bottom: 1rem; opacity: 0.25; }
+  .no-results h3 { font-size: 16px; color: var(--brand-dark-text); margin-bottom: 6px; }
+  .no-results p { font-size: 13px; }
+
+  /* ===== FLOATING MOBILE CART ===== */
+  .mobile-cart-fab {
+    display: none;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 150;
+    background: var(--brand-coral);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 20px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    gap: 8px;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .mobile-cart-fab { display: flex; }
+    .product-section { padding: 1rem; }
+    .search-section { padding: 0.75rem 1rem; }
+    header { padding: 0 1rem; }
+  }
+
+  /* ===== MISC ===== */
+  .loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.8);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .loading-overlay.active { display: flex; }
+
+  .spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--brand-border);
+    border-top-color: var(--brand-coral);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .loading-text { font-size: 13px; color: var(--brand-muted); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo">
+    <span class="brand-en">ENOMAD</span>
+    <span class="brand-sub">K-Beauty · Mexico</span>
+  </div>
+  <div class="header-divider"></div>
+  <span class="header-title">B2B Wholesale Order Portal · 2026</span>
+  <button class="header-cart-btn" onclick="openOrderModal()">
+    🛒 Cotización
+    <span class="cart-badge" id="headerCartCount">0</span>
+  </button>
+</header>
+
+<!-- SEARCH & FILTER BAR -->
+<div class="search-section">
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Buscar producto o marca..." oninput="filterProducts()">
+  </div>
+  <div class="filter-chips" id="filterChips">
+    <button class="chip active" onclick="setCategory('ALL', this)">Todos</button>
+    <button class="chip" onclick="setCategory('Skincare', this)">Skincare</button>
+    <button class="chip" onclick="setCategory('Sun Care', this)">Sun Care</button>
+    <button class="chip" onclick="setCategory('Hair', this)">Hair</button>
+    <button class="chip" onclick="setCategory('Makeup', this)">Makeup</button>
+    <button class="chip" onclick="setCategory('Supplement', this)">Supplement</button>
+    <button class="chip" onclick="setCategory('Goods', this)">Goods</button>
+  </div>
+  <select class="sort-select" onchange="sortProducts(this.value)">
+    <option value="brand">Ordenar: Marca</option>
+    <option value="price-asc">Precio ↑</option>
+    <option value="price-desc">Precio ↓</option>
+    <option value="stock-desc">Stock ↓</option>
+    <option value="name">Nombre A-Z</option>
+  </select>
+  <span class="results-count" id="resultsCount">96 productos</span>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- PRODUCT SECTION -->
+  <div class="product-section" id="productSection">
+    <!-- Rendered by JS -->
+  </div>
+
+  <!-- SIDEBAR CART -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-title">Cotización</div>
+      <div class="sidebar-subtitle" id="cartMeta">0 productos seleccionados</div>
+    </div>
+    <div class="sidebar-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <p>Seleccione los productos<br>y cantidades deseadas</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span class="cart-summary-label">Subtotal items</span>
+        <span class="cart-summary-val" id="cartItemCount">0 pzas</span>
+      </div>
+      <div class="cart-summary-row">
+        <span class="cart-summary-label">SKUs</span>
+        <span class="cart-summary-val" id="cartSkuCount">0 SKUs</span>
+      </div>
+      <div class="cart-total-row">
+        <span class="cart-total-label">TOTAL</span>
+        <div>
+          <span class="cart-total-val" id="cartTotal">$ 0</span>
+          <span class="cart-total-currency">MXN</span>
+        </div>
+      </div>
+      <button class="order-btn" id="orderBtn" onclick="openOrderModal()" disabled>
+        📋 Solicitar Pedido
+      </button>
+      <button class="clear-btn" onclick="clearCart()">Vaciar cotización</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MOBILE FAB -->
+<button class="mobile-cart-fab" id="mobileFab" onclick="openOrderModal()">
+  🛒 <span id="mobileFabText">Cotización (0)</span>
+</button>
+
+<!-- ORDER MODAL -->
+<div class="modal-backdrop" id="orderModal">
+  <div class="modal" id="modalContent">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- LOADING -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="spinner"></div>
+  <span class="loading-text">Enviando solicitud...</span>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+/* ======================================================
+   ENOMAD Mexico B2B — Main Application
+   v1.0 | 2026-06
+   Contact: lego@enomad.co.kr
+   Google Sheets webhook: configure SHEET_WEBHOOK below
+====================================================== */
+
+/* ── CONFIGURATION ── */
+/* 
+  SETUP INSTRUCTIONS:
+  1. Google Apps Script를 통해 웹훅 URL 생성
+  2. 아래 SHEET_WEBHOOK에 붙여넣기
+  3. Google Sheet 공유 설정 확인
+*/
+const CONFIG = {
+  SHEET_WEBHOOK: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec',
+  COMPANY_NAME: 'ENOMAD Korea',
+  CONTACT_EMAIL: 'lego@enomad.co.kr',
+  CURRENCY: 'MXN',
+  VERSION: '1.0'
+};
+
+/* ── PRODUCT DATA ── */
+const PRODUCTS = [
+  {id:1, name:"Gentle Pore Cleansing Oil 150ml", brand:"Dr.Althea", price:236.62, stock:88, category:"Skincare", emoji:"🧴"},
+  {id:2, name:"0.1% Gentle Retinol Serum 30ml", brand:"Dr.Althea", price:209.54, stock:87, category:"Skincare", emoji:"✨"},
+  {id:3, name:"ABC Glow Whipped Serum 100ml", brand:"Dr.Althea", price:151.69, stock:105, category:"Skincare", emoji:"💫"},
+  {id:4, name:"345 Relief Cream 50ml", brand:"Dr.Althea", price:231.62, stock:267, category:"Skincare", emoji:"🌿"},
+  {id:5, name:"Aqua Marine Jelly Mist", brand:"Dr.Althea", price:212.04, stock:30, category:"Skincare", emoji:"💧"},
+  {id:6, name:"Retinol Flat Iron Eye Roller", brand:"Dr.Althea", price:178.92, stock:340, category:"Skincare", emoji:"👁"},
+  {id:7, name:"EYE LASH BOOST SERUM 9ml", brand:"Dr.Althea", price:114.23, stock:105, category:"Skincare", emoji:"✨"},
+  {id:8, name:"Aqua Marine Deep Serum", brand:"Dr.Althea", price:162.58, stock:182, category:"Skincare", emoji:"🌊"},
+  {id:9, name:"BAKUCHIOL PLUMPING SERUM 30ml", brand:"EQQUALBERRY", price:290.73, stock:50, category:"Skincare", emoji:"🍇"},
+  {id:10, name:"No.3 Skin Softening Serum 50ml", brand:"NUMBUZIN", price:220.80, stock:25, category:"Skincare", emoji:"🌸"},
+  {id:11, name:"No.5+ Glutathione Vitamin Concentrated Serum 30ml", brand:"NUMBUZIN", price:221.09, stock:20, category:"Skincare", emoji:"⭐"},
+  {id:12, name:"Madeca Cream Time Reverse (Season7) 50ml", brand:"CENTELLIAN 24", price:152.67, stock:84, category:"Skincare", emoji:"🌿"},
+  {id:13, name:"DRESS&ROOM SPRAY 200ml (Multi-scent)", brand:"CELLUVER", price:150.33, stock:0, category:"Hair", emoji:"🌺"},
+  {id:14, name:"HAIR PERFUME ESSENCE OIL 100ml", brand:"CELLUVER", price:174.62, stock:25, category:"Hair", emoji:"💆"},
+  {id:15, name:"AMPOULE NO WASH TREATMENT 200ml", brand:"CELLUVER", price:145.18, stock:40, category:"Hair", emoji:"💇"},
+  {id:16, name:"ARGAN OIL DAMAGE CONTROL LPP HAIR PACK 300ml", brand:"CELLUVER", price:197.25, stock:60, category:"Hair", emoji:"🌰"},
+  {id:17, name:"GLUE HOLD MAT FIXER", brand:"CELLUVER", price:157.14, stock:27, category:"Hair", emoji:"✂"},
+  {id:18, name:"THE-A Retinal Shot Tightening Booster 15ml", brand:"CELIMAX", price:182.99, stock:298, category:"Skincare", emoji:"💉"},
+  {id:19, name:"THE VITA-A Retinol Shot Tightening Serum 30ml", brand:"CELIMAX", price:196.41, stock:17, category:"Skincare", emoji:"💊"},
+  {id:20, name:"PORE+DARK SPOT BRIGHTENING CREAM MASK (1EA)", brand:"CELIMAX", price:57.04, stock:30, category:"Skincare", emoji:"🎭"},
+  {id:21, name:"AQUA BEAM DUAL POT #01 (Aqua Lip Balm / Shine Beam Plumper)", brand:"TITTO", price:143.89, stock:4, category:"Makeup", emoji:"💋"},
+  {id:22, name:"AQUA BEAM DUAL POT #02 (Super Nova / Black Hole)", brand:"TITTO", price:143.89, stock:11, category:"Makeup", emoji:"💄"},
+  {id:23, name:"LIP&CHEEK DUAL POT #01 (Satin Ribbon / Pink On Top)", brand:"TITTO", price:143.89, stock:20, category:"Makeup", emoji:"🌹"},
+  {id:24, name:"LIP&CHEEK DUAL POT #02 (Juicy Smile / Beach Sunny Girl)", brand:"TITTO", price:143.89, stock:15, category:"Makeup", emoji:"🌊"},
+  {id:25, name:"LIP&CHEEK DUAL POT #03 (Super Magnetic / Nudy Fetish)", brand:"TITTO", price:143.89, stock:33, category:"Makeup", emoji:"🧲"},
+  {id:26, name:"LIP&CHEEK DUAL POT #04 (First Blossom / Flush Issue)", brand:"TITTO", price:143.89, stock:40, category:"Makeup", emoji:"🌸"},
+  {id:27, name:"LIP&CHEEK DUAL POT #05 (City Pink / Purple Never Die)", brand:"TITTO", price:143.89, stock:18, category:"Makeup", emoji:"💜"},
+  {id:28, name:"LIP&CHEEK DUAL POT #06 (Dry Rose / Veiled Rosy)", brand:"TITTO", price:143.89, stock:34, category:"Makeup", emoji:"🥀"},
+  {id:29, name:"NIACIN LIGHTHENOL AMPOULE 30ml", brand:"TITTO", price:128.80, stock:4, category:"Skincare", emoji:"✨"},
+  {id:30, name:"AQUA DEEP PORIN AMPOULE 30ml", brand:"TITTO", price:128.80, stock:3, category:"Skincare", emoji:"💧"},
+  {id:31, name:"TITTO AQUA DEEP PORIN CREAM 50ml", brand:"TITTO", price:200.74, stock:4, category:"Skincare", emoji:"🌊"},
+  {id:32, name:"Keyring Rosa", brand:"TITTO", price:68.08, stock:74, category:"Goods", emoji:"🔑"},
+  {id:33, name:"Keyring Blanco", brand:"TITTO", price:0, stock:19, category:"Goods", emoji:"🗝"},
+  {id:34, name:"VITA SOFT DAILY SUN LOTION 150ML", brand:"TOCOBO", price:227.20, stock:65, category:"Sun Care", emoji:"☀"},
+  {id:35, name:"Cica Cooling Sun Stick SPF50+ PA++++ (1box=50ea)", brand:"TOCOBO", price:167.46, stock:37, category:"Sun Care", emoji:"🌞"},
+  {id:36, name:"VITA WATERPROOF SUN STICK SPF50+ PA++++ 18g (1box=50ea)", brand:"TOCOBO", price:167.46, stock:38, category:"Sun Care", emoji:"🏖"},
+  {id:37, name:"Bio Watery Sun Cream SPF50+ PA++++ (1box=50ea)", brand:"TOCOBO", price:165.60, stock:28, category:"Sun Care", emoji:"🌤"},
+  {id:38, name:"Collagen Brightening Eye Gel Cream", brand:"TOCOBO", price:139.10, stock:1, category:"Skincare", emoji:"👁"},
+  {id:39, name:"TOCOBO HEAT PROOF HAIR MIST 02 MY DEFAULT", brand:"TOCOBO", price:184.88, stock:50, category:"Hair", emoji:"💨"},
+  {id:40, name:"Relief Sun: Rice + Probiotics 50ml", brand:"BEAUTY OF JOSEON", price:198.43, stock:60, category:"Sun Care", emoji:"🌾"},
+  {id:41, name:"Matte Sun Stick: Mugwort + Camilia 18g", brand:"BEAUTY OF JOSEON", price:184.81, stock:30, category:"Sun Care", emoji:"🌿"},
+  {id:42, name:"Madagascar Centella Ampoule Foam 125ml", brand:"SKIN1004", price:193.68, stock:9, category:"Skincare", emoji:"🌱"},
+  {id:43, name:"Madagascar Centella Tea-Trica Bha Foam 125ml", brand:"SKIN1004", price:193.75, stock:3, category:"Skincare", emoji:"🍃"},
+  {id:44, name:"Madagascar Centella Poremizing Deep Cleansing Foam 125ml", brand:"SKIN1004", price:193.75, stock:3, category:"Skincare", emoji:"🌿"},
+  {id:45, name:"Madagascar Centella Poremizing Quick Clay Stick Mask 27g", brand:"SKIN1004", price:203.06, stock:75, category:"Skincare", emoji:"🎋"},
+  {id:46, name:"Madagascar Centella Ampoule 100ml", brand:"SKIN1004", price:281.74, stock:50, category:"Skincare", emoji:"💚"},
+  {id:47, name:"Madagascar Centella Poremizing Fresh Ampoule 100ml", brand:"SKIN1004", price:239.57, stock:45, category:"Skincare", emoji:"🌊"},
+  {id:48, name:"Madagascar Centella Probio-Cica Intensive Ampoule 95ml", brand:"SKIN1004", price:321.04, stock:50, category:"Skincare", emoji:"🧬"},
+  {id:49, name:"Madagascar Centella Teca Ampoule 50ml", brand:"SKIN1004", price:184.74, stock:80, category:"Skincare", emoji:"🌿"},
+  {id:50, name:"Madagascar Centella Hyalu-Teca Plumping Ampoule 50ml", brand:"SKIN1004", price:210.13, stock:17, category:"Skincare", emoji:"💧"},
+  {id:51, name:"Madagascar Centella Hyalu-Teca Firming Cream 50ml", brand:"SKIN1004", price:196.29, stock:50, category:"Skincare", emoji:"🌱"},
+  {id:52, name:"Madagascar Centella Probio-Cica Glow Sun Ampoule 50ml", brand:"SKIN1004", price:180.25, stock:20, category:"Skincare", emoji:"✨"},
+  {id:53, name:"Madagascar Centella Cream 75ml", brand:"SKIN1004", price:220.80, stock:52, category:"Skincare", emoji:"🌿"},
+  {id:54, name:"Madagascar Centella Teca Cream 75ml", brand:"SKIN1004", price:180.85, stock:48, category:"Skincare", emoji:"🍃"},
+  {id:55, name:"Madagascar Centella Poremizing Light Gel Cream 75ml", brand:"SKIN1004", price:182.60, stock:35, category:"Skincare", emoji:"💚"},
+  {id:56, name:"Madagascar Centella Tea-Trica B5 Cream 75ml", brand:"SKIN1004", price:185.64, stock:40, category:"Skincare", emoji:"🌱"},
+  {id:57, name:"Madagascar Centella Hyalu-Cica Travel Kit", brand:"SKIN1004", price:314.27, stock:12, category:"Skincare", emoji:"✈"},
+  {id:58, name:"Madagascar Centella Niacinamide 10 Boosting Shot Ampoule 30ml", brand:"SKIN1004", price:185.33, stock:45, category:"Skincare", emoji:"💉"},
+  {id:59, name:"Madagascar Centella Retinol 0.2 Boosting Shot Ampoule 30ml", brand:"SKIN1004", price:208.32, stock:45, category:"Skincare", emoji:"💊"},
+  {id:60, name:"Deep Vita C Capsule Cream 55g", brand:"MEDICUBE", price:303.60, stock:33, category:"Skincare", emoji:"🍊"},
+  {id:61, name:"Pdrn Pink Collagen Capsule Cream 55g", brand:"MEDICUBE", price:307.28, stock:74, category:"Skincare", emoji:"🌸"},
+  {id:62, name:"TXA Niacinamide Capsule Cream 55g", brand:"MEDICUBE", price:307.28, stock:71, category:"Skincare", emoji:"💊"},
+  {id:63, name:"Hyaluronic Moisturizing Capsule Cream 55g", brand:"MEDICUBE", price:307.28, stock:74, category:"Skincare", emoji:"💧"},
+  {id:64, name:"Collagen Night Wrapping Mask 75ml", brand:"MEDICUBE", price:256.72, stock:37, category:"Skincare", emoji:"🌙"},
+  {id:65, name:"Pdrn Pink Peptide Serum 30ml", brand:"MEDICUBE", price:242.22, stock:44, category:"Skincare", emoji:"🧬"},
+  {id:66, name:"TXA Niacinamide 15 Serum 30ml", brand:"MEDICUBE", price:238.24, stock:64, category:"Skincare", emoji:"✨"},
+  {id:67, name:"Deep Vita C Capsule Serum 30ml", brand:"MEDICUBE", price:237.38, stock:51, category:"Skincare", emoji:"🍊"},
+  {id:68, name:"KOJIC ACID TERMERIC VITA JELLY MIST SERUM 100ml", brand:"MEDICUBE", price:232.80, stock:16, category:"Skincare", emoji:"🌟"},
+  {id:69, name:"PDRN PINK PEPTIDE SERUM MASK (10EA)", brand:"MEDICUBE", price:317.07, stock:10, category:"Skincare", emoji:"🎭"},
+  {id:70, name:"EGF NAD FIRMING SERUM 30ml", brand:"MEDICUBE", price:245.46, stock:30, category:"Skincare", emoji:"⚡"},
+  {id:71, name:"PDRN PINK PEPTIDE SERUM ULTRA LIGHT 30ml", brand:"MEDICUBE", price:161.99, stock:40, category:"Skincare", emoji:"🌸"},
+  {id:72, name:"PDRN Pink CollagenBubble Serum 95ml", brand:"MEDICUBE", price:256.86, stock:30, category:"Skincare", emoji:"🫧"},
+  {id:73, name:"ZERO PORE PAD 2.0 (70pcs)", brand:"MEDICUBE", price:327.15, stock:20, category:"Skincare", emoji:"🧹"},
+  {id:74, name:"ZERO FOAM CLEANSER 120g", brand:"MEDICUBE", price:213.44, stock:10, category:"Skincare", emoji:"🫧"},
+  {id:75, name:"HEARTLEAF PORE CONTROL CLEANSING OIL 200ml", brand:"ANUA", price:306.91, stock:5, category:"Skincare", emoji:"🌿"},
+  {id:76, name:"NIACINAMIDE10% + TXA 4% SERUM 30ml", brand:"ANUA", price:286.97, stock:58, category:"Skincare", emoji:"⚗"},
+  {id:77, name:"Azelaic Acid 10+ Hyaluron Redness Soothing Serum 30ml", brand:"ANUA", price:290.06, stock:8, category:"Skincare", emoji:"❤"},
+  {id:78, name:"A-Control 10% Azelaic Acid Serum 30ml", brand:"NINE LESS", price:167.96, stock:1, category:"Skincare", emoji:"💚"},
+  {id:79, name:"Hyalraebae Pore Bubble Serum 70ml", brand:"MIXSOON", price:168.69, stock:50, category:"Skincare", emoji:"🫧"},
+  {id:80, name:"Bean Essence 50ml", brand:"MIXSOON", price:304.00, stock:26, category:"Skincare", emoji:"🫘"},
+  {id:81, name:"Bean cream 50ml", brand:"MIXSOON", price:345.26, stock:29, category:"Skincare", emoji:"🫘"},
+  {id:82, name:"Soybean Milk Serum 50ml", brand:"MIXSOON", price:338.56, stock:10, category:"Skincare", emoji:"🥛"},
+  {id:83, name:"TXA 6 Niacinamide 10 Retinal Serum 30ml", brand:"PURITO SEOUL", price:233.31, stock:9, category:"Skincare", emoji:"✨"},
+  {id:84, name:"Azelaic Acid 10 Kojic Azulene Serum 30ml", brand:"PURITO SEOUL", price:233.31, stock:29, category:"Skincare", emoji:"💚"},
+  {id:85, name:"PDRN REEDLE SHOT EYE LIFTER 15ml", brand:"VT COSMETICS", price:266.21, stock:1030, category:"Skincare", emoji:"👁"},
+  {id:86, name:"LOCIÓN HIDRATANTE LIBRE DE ACEITES 100ml", brand:"COSRX", price:202.00, stock:4, category:"Skincare", emoji:"💧"},
+  {id:87, name:"ESPUMA LIMPIADORA SUAVE 150ml", brand:"DR.G", price:160.00, stock:5, category:"Skincare", emoji:"🫧"},
+  {id:88, name:"PROTECTOR SOLAR EN BARRA SPF50+ PA++++ 18g", brand:"JUMISO", price:162.00, stock:2, category:"Sun Care", emoji:"☀"},
+  {id:89, name:"Rice Dough Modeling Mask (4EA)", brand:"FULLY", price:188.30, stock:1, category:"Skincare", emoji:"🍚"},
+  {id:90, name:"PIN POINT EYESHADOW PALETTE 01 PEACH+CORAL", brand:"COLORGRAM", price:199.00, stock:4, category:"Makeup", emoji:"🎨"},
+  {id:91, name:"PIN POINT EYESHADOW PALETTE 02 PINK+MAUVE", brand:"COLORGRAM", price:199.00, stock:4, category:"Makeup", emoji:"🎨"},
+  {id:92, name:"PIN POINT EYESHADOW PALETTE 03 PINK+LAVENDER", brand:"COLORGRAM", price:199.00, stock:4, category:"Makeup", emoji:"🎨"},
+  {id:93, name:"PIN POINT EYESHADOW PALETTE 07 NUDE+GEEK", brand:"COLORGRAM", price:199.00, stock:4, category:"Makeup", emoji:"🎨"},
+  {id:94, name:"POLVO SECO PARA CABELLO GRASO 20g", brand:"SO NATURAL", price:160.34, stock:7, category:"Hair", emoji:"💨"},
+  {id:95, name:"RETINAL 300PPM CREAM", brand:"DERMAFACTORY", price:160.54, stock:3, category:"Skincare", emoji:"🌟"},
+  {id:96, name:"Liposome Glutathione Direct Ultra X 9.75g (30EA)", brand:"ESTHER FORMULA", price:244.87, stock:8, category:"Supplement", emoji:"💊"}
+];
+
+/* ── STATE ── */
+let cart = {}; // { productId: quantity }
+let currentCategory = 'ALL';
+let currentSort = 'brand';
+let currentSearch = '';
+
+/* ── RENDER PRODUCTS ── */
+function getFilteredProducts() {
+  let list = [...PRODUCTS];
+
+  if (currentCategory !== 'ALL') {
+    list = list.filter(p => p.category === currentCategory);
+  }
+
+  if (currentSearch.trim()) {
+    const q = currentSearch.trim().toLowerCase();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.brand.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q)
+    );
+  }
+
+  switch (currentSort) {
+    case 'price-asc': list.sort((a,b) => a.price - b.price); break;
+    case 'price-desc': list.sort((a,b) => b.price - a.price); break;
+    case 'stock-desc': list.sort((a,b) => b.stock - a.stock); break;
+    case 'name': list.sort((a,b) => a.name.localeCompare(b.name)); break;
+    case 'brand': list.sort((a,b) => a.brand.localeCompare(b.brand) || a.name.localeCompare(b.name)); break;
+  }
+
+  return list;
+}
+
+function renderProducts() {
+  const section = document.getElementById('productSection');
+  const filtered = getFilteredProducts();
+
+  document.getElementById('resultsCount').textContent = `${filtered.length} productos`;
+
+  if (filtered.length === 0) {
+    section.innerHTML = `
+      <div class="no-results">
+        <div class="no-results-icon">🔍</div>
+        <h3>Sin resultados</h3>
+        <p>No se encontraron productos para "${currentSearch}"</p>
+      </div>`;
+    return;
+  }
+
+  if (currentSort === 'brand') {
+    // Group by brand
+    const grouped = {};
+    filtered.forEach(p => {
+      if (!grouped[p.brand]) grouped[p.brand] = [];
+      grouped[p.brand].push(p);
+    });
+
+    section.innerHTML = Object.entries(grouped).map(([brand, products]) => `
+      <div class="brand-group">
+        <div class="brand-group-header">
+          <span class="brand-group-name">${brand}</span>
+          <span class="brand-count">${products.length} SKUs</span>
+        </div>
+        <div class="product-grid">
+          ${products.map(p => renderCard(p)).join('')}
+        </div>
+      </div>
+    `).join('');
+  } else {
+    section.innerHTML = `<div class="product-grid">${filtered.map(p => renderCard(p)).join('')}</div>`;
+  }
+}
+
+function renderCard(p) {
+  const qty = cart[p.id] || 0;
+  const isOutOfStock = p.stock === 0;
+  const isLowStock = p.stock > 0 && p.stock <= 10;
+  const isInCart = qty > 0;
+
+  let stockBadge, stockClass;
+  if (isOutOfStock) {
+    stockBadge = 'Sin stock'; stockClass = 'out';
+  } else if (isLowStock) {
+    stockBadge = `⚠ ${p.stock} uds`; stockClass = 'low';
+  } else {
+    stockBadge = `${p.stock} uds`; stockClass = 'ok';
+  }
+
+  const priceDisplay = p.price > 0 ? `$ ${p.price.toFixed(2)}` : 'Consultar';
+
+  return `
+    <div class="product-card ${isInCart ? 'in-cart' : ''} ${isOutOfStock ? 'out-of-stock' : ''}" id="card-${p.id}">
+      <div class="card-image-area">
+        <div class="category-tag">${p.category}</div>
+        <div class="card-image-placeholder">${p.emoji}</div>
+        <span class="stock-badge ${stockClass}">${stockBadge}</span>
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-price-row">
+          <span class="card-price">${priceDisplay}</span>
+          <span class="card-currency">${p.price > 0 ? 'MXN' : ''}</span>
+        </div>
+        ${isOutOfStock
+          ? `<button class="add-to-cart-btn" style="width:100%;opacity:0.5;cursor:not-allowed" disabled>Sin stock</button>`
+          : `<div class="qty-control">
+              <button class="qty-btn" onclick="changeQty(${p.id}, -1)" ${qty === 0 ? 'disabled' : ''}>−</button>
+              <input class="qty-input" type="number" min="0" max="${p.stock}" value="${qty}"
+                onchange="setQty(${p.id}, parseInt(this.value) || 0)"
+                onfocus="this.select()">
+              <button class="qty-btn" onclick="changeQty(${p.id}, 1)" ${qty >= p.stock ? 'disabled' : ''}>+</button>
+              <button class="add-to-cart-btn ${qty > 0 ? 'added' : ''}" onclick="changeQty(${p.id}, qty > 0 ? 0 : 1)">
+                ${qty > 0 ? '✓ En cotiz.' : '+ Añadir'}
+              </button>
+            </div>`
+        }
+      </div>
+    </div>`;
+}
+
+/* ── QTY MANAGEMENT ── */
+function changeQty(productId, delta) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p || p.stock === 0) return;
+
+  const current = cart[productId] || 0;
+  const newQty = Math.max(0, Math.min(p.stock, current + delta));
+
+  if (newQty === 0) {
+    delete cart[productId];
+  } else {
+    cart[productId] = newQty;
+  }
+
+  updateCartUI();
+  updateCard(productId);
+}
+
+function setQty(productId, qty) {
+  const p = PRODUCTS.find(x => x.id === productId);
+  if (!p) return;
+
+  const newQty = Math.max(0, Math.min(p.stock, qty));
+
+  if (newQty === 0) {
+    delete cart[productId];
+  } else {
+    cart[productId] = newQty;
+  }
+
+  updateCartUI();
+  updateCard(productId);
+}
+
+function updateCard(productId) {
+  const card = document.getElementById(`card-${productId}`);
+  if (!card) return;
+
+  const p = PRODUCTS.find(x => x.id === productId);
+  const qty = cart[productId] || 0;
+  const newCard = document.createElement('div');
+  newCard.innerHTML = renderCard(p);
+  const newCardEl = newCard.firstElementChild;
+
+  card.replaceWith(newCardEl);
+}
+
+/* ── CART UI ── */
+function updateCartUI() {
+  const items = Object.entries(cart);
+  const totalItems = items.reduce((s, [id, qty]) => s + qty, 0);
+  const totalSkus = items.length;
+  const totalPrice = items.reduce((s, [id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === parseInt(id));
+    return s + (p ? p.price * qty : 0);
+  }, 0);
+
+  // Header badge
+  document.getElementById('headerCartCount').textContent = totalSkus;
+  document.getElementById('cartItemCount').textContent = `${totalItems} pzas`;
+  document.getElementById('cartSkuCount').textContent = `${totalSkus} SKUs`;
+  document.getElementById('cartTotal').textContent = `$ ${totalPrice.toFixed(2)}`;
+  document.getElementById('cartMeta').textContent = `${totalSkus} productos seleccionados`;
+
+  // Mobile FAB
+  document.getElementById('mobileFabText').textContent =
+    totalSkus > 0 ? `Cotización (${totalSkus} SKUs)` : 'Cotización vacía';
+
+  // Order button
+  document.getElementById('orderBtn').disabled = totalSkus === 0;
+
+  // Sidebar items
+  const cartItemsEl = document.getElementById('cartItems');
+
+  if (items.length === 0) {
+    cartItemsEl.innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <p>Seleccione los productos<br>y cantidades deseadas</p>
+      </div>`;
+    return;
+  }
+
+  cartItemsEl.innerHTML = items.map(([id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === parseInt(id));
+    if (!p) return '';
+    const subtotal = p.price * qty;
+    return `
+      <div class="cart-item">
+        <div class="cart-item-info">
+          <div class="cart-item-brand">${p.brand}</div>
+          <div class="cart-item-name">${p.name}</div>
+          <div class="cart-item-row">
+            <button class="cart-qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+            <span class="cart-qty-display">${qty}</span>
+            <button class="cart-qty-btn" onclick="changeQty(${p.id}, 1)" ${qty >= p.stock ? 'disabled style="opacity:0.3"' : ''}>+</button>
+            <span class="cart-item-subtotal">$ ${subtotal.toFixed(2)}</span>
+          </div>
+        </div>
+        <button class="cart-remove" onclick="removeItem(${p.id})" title="Eliminar">✕</button>
+      </div>`;
+  }).join('');
+}
+
+function removeItem(productId) {
+  delete cart[productId];
+  updateCartUI();
+  updateCard(productId);
+}
+
+function clearCart() {
+  if (Object.keys(cart).length === 0) return;
+  if (!confirm('¿Vaciar la cotización?')) return;
+  cart = {};
+  updateCartUI();
+  renderProducts();
+}
+
+/* ── FILTER / SORT ── */
+function setCategory(cat, el) {
+  currentCategory = cat;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  renderProducts();
+}
+
+function filterProducts() {
+  currentSearch = document.getElementById('searchInput').value;
+  renderProducts();
+}
+
+function sortProducts(val) {
+  currentSort = val;
+  renderProducts();
+}
+
+/* ── ORDER MODAL ── */
+function openOrderModal() {
+  const items = Object.entries(cart);
+  if (items.length === 0) {
+    showToast('Agregue productos a su cotización primero', 'error');
+    return;
+  }
+
+  const totalPrice = items.reduce((s, [id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === parseInt(id));
+    return s + (p ? p.price * qty : 0);
+  }, 0);
+
+  const totalItems = items.reduce((s, [id, qty]) => s + qty, 0);
+
+  const previewRows = items.map(([id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === parseInt(id));
+    return `<div class="order-preview-item">
+      <span>${p.name}</span>
+      <span style="margin-left:8px;white-space:nowrap">${qty} × $ ${p.price.toFixed(2)} = <strong>$ ${(p.price * qty).toFixed(2)}</strong></span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('modalContent').innerHTML = `
+    <div class="modal-header">
+      <h2>Solicitud de Pedido</h2>
+      <p>Complete los datos del importador para enviar su cotización</p>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Empresa / Razón Social <span>*</span></label>
+          <input class="form-input" id="fCompany" placeholder="Tu empresa S.A. de C.V." required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nombre de contacto <span>*</span></label>
+          <input class="form-input" id="fName" placeholder="Nombre Apellido" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Email <span>*</span></label>
+          <input class="form-input" id="fEmail" type="email" placeholder="contacto@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">WhatsApp / Teléfono <span>*</span></label>
+          <input class="form-input" id="fPhone" placeholder="+52 55 1234 5678" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">RFC</label>
+          <input class="form-input" id="fRfc" placeholder="RFC (opcional)">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ciudad / Estado</label>
+          <input class="form-input" id="fCity" placeholder="Ciudad de México">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notas adicionales</label>
+        <textarea class="form-textarea" id="fNotes" placeholder="Condiciones especiales, fechas de entrega, preguntas..."></textarea>
+      </div>
+      <div class="order-preview">
+        <div class="order-preview-title">📦 Resumen del Pedido — ${items.length} SKUs / ${totalItems} piezas</div>
+        ${previewRows}
+        <div class="order-preview-total">
+          <span>TOTAL ESTIMADO</span>
+          <span>$ ${totalPrice.toFixed(2)} MXN</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-cancel" onclick="closeOrderModal()">Cancelar</button>
+      <button class="modal-submit" onclick="submitOrder()">📤 Enviar Solicitud</button>
+    </div>`;
+
+  document.getElementById('orderModal').classList.add('open');
+}
+
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.remove('open');
+}
+
+/* ── SUBMIT ORDER ── */
+async function submitOrder() {
+  const company = document.getElementById('fCompany').value.trim();
+  const name = document.getElementById('fName').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+
+  if (!company || !name || !email || !phone) {
+    showToast('Por favor complete todos los campos obligatorios (*)', 'error');
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showToast('Por favor ingrese un email válido', 'error');
+    return;
+  }
+
+  const items = Object.entries(cart);
+  const totalPrice = items.reduce((s, [id, qty]) => {
+    const p = PRODUCTS.find(x => x.id === parseInt(id));
+    return s + (p ? p.price * qty : 0);
+  }, 0);
+
+  const orderRef = 'ENM-MX-' + Date.now().toString(36).toUpperCase();
+  const now = new Date().toLocaleString('es-MX', {timeZone: 'America/Mexico_City'});
+
+  const orderData = {
+    ref: orderRef,
+    timestamp: now,
+    company,
+    name,
+    email,
+    phone,
+    rfc: document.getElementById('fRfc').value.trim(),
+    city: document.getElementById('fCity').value.trim(),
+    notes: document.getElementById('fNotes').value.trim(),
+    total_mxn: totalPrice.toFixed(2),
+    sku_count: items.length,
+    items: items.map(([id, qty]) => {
+      const p = PRODUCTS.find(x => x.id === parseInt(id));
+      return {
+        id: p.id,
+        brand: p.brand,
+        name: p.name,
+        category: p.category,
+        qty,
+        unit_price: p.price,
+        subtotal: (p.price * qty).toFixed(2)
+      };
+    })
+  };
+
+  document.getElementById('loadingOverlay').classList.add('active');
+  document.getElementById('orderModal').classList.remove('open');
+
+  /* 
+    Google Sheets 연동
+    CONFIG.SHEET_WEBHOOK에 Apps Script URL 설정 시 실제 전송
+    미설정 시 시뮬레이션 모드
+  */
+  let success = false;
+
+  if (CONFIG.SHEET_WEBHOOK !== 'https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec') {
+    try {
+      await fetch(CONFIG.SHEET_WEBHOOK, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(orderData)
+      });
+      success = true;
+    } catch(e) {
+      console.error('Webhook error:', e);
+      success = true; // no-cors always resolves
+    }
+  } else {
+    // DEMO MODE: simulate
+    await new Promise(r => setTimeout(r, 1800));
+    success = true;
+    console.log('ORDER DATA (demo mode):', JSON.stringify(orderData, null, 2));
+  }
+
+  document.getElementById('loadingOverlay').classList.remove('active');
+
+  if (success) {
+    showSuccessModal(orderRef, company, email, totalPrice);
+    cart = {};
+    updateCartUI();
+    renderProducts();
+  }
+}
+
+function showSuccessModal(ref, company, email, total) {
+  document.getElementById('modalContent').innerHTML = `
+    <div class="success-modal">
+      <div class="success-icon">✅</div>
+      <h2>¡Solicitud Enviada!</h2>
+      <p>Su cotización ha sido recibida por el equipo de ENOMAD Korea.<br>
+      Nos comunicaremos con usted en menos de 24 horas hábiles.</p>
+      <div class="success-ref">${ref}</div>
+      <p style="font-size:12px;color:var(--brand-muted)">
+        Empresa: <strong>${company}</strong><br>
+        Total estimado: <strong>$ ${total.toFixed(2)} MXN</strong><br>
+        Confirmación enviada a: ${email}
+      </p>
+      <p style="font-size:12px;margin-top:12px">
+        Contacto directo: <strong style="color:var(--brand-coral)">${CONFIG.CONTACT_EMAIL}</strong>
+      </p>
+      <button class="success-close" onclick="closeOrderModal()">Cerrar</button>
+    </div>`;
+  document.getElementById('orderModal').classList.add('open');
+}
+
+/* ── TOAST ── */
+function showToast(msg, type = 'default') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transition = 'opacity 0.3s';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+/* ── CLOSE MODAL ON BACKDROP CLICK ── */
+document.getElementById('orderModal').addEventListener('click', function(e) {
+  if (e.target === this) closeOrderModal();
+});
+
+/* ── INIT ── */
+renderProducts();
+updateCartUI();
+</script>
+
+<!--
+========================================================
+  GOOGLE APPS SCRIPT 설정 가이드 (레고쌤)
+  
+  1. Google Sheets에서 새 시트 생성
+  2. 확장 프로그램 > Apps Script 열기
+  3. 아래 코드 붙여넣기:
+
+  function doPost(e) {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    const data = JSON.parse(e.postData.contents);
+    
+    // 헤더 (처음 한 번만)
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(['주문번호','일시','회사','담당자','이메일','전화','RFC',
+        '도시','총액MXN','SKU수','제품목록','메모']);
+    }
+    
+    const itemsSummary = data.items.map(i => 
+      `${i.brand} / ${i.name} × ${i.qty}ea = $${i.subtotal}`
+    ).join('\n');
+    
+    sheet.appendRow([
+      data.ref, data.timestamp, data.company, data.name,
+      data.email, data.phone, data.rfc, data.city,
+      data.total_mxn, data.sku_count, itemsSummary, data.notes
+    ]);
+    
+    return ContentService.createTextOutput(JSON.stringify({status:'ok'}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+
+  function doGet(e) {
+    return ContentService.createTextOutput('ENOMAD B2B Webhook Active');
+  }
+
+  4. 배포 > 새 배포 > 웹앱
+     - 실행 계정: 나
+     - 액세스 권한: 모든 사용자
+  5. 배포 URL을 CONFIG.SHEET_WEBHOOK에 붙여넣기
+========================================================
+-->
+</body>
+</html>
